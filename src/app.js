@@ -1,5 +1,6 @@
 import { Component } from 'react'
-import './app.scss'
+import "taro-ui/dist/style/index.scss"; // 全局引入一次即可
+import './asset/styles/app.scss';
 
 class App extends Component {
 
@@ -9,8 +10,10 @@ class App extends Component {
 
   componentDidHide () {}
 
-  componentDidCatchError () {}
+  componentCatchError() {}
 
+  componentDidCatchError() {}
+  
   // this.props.children 是将要会渲染的页面
   render () {
     return this.props.children

@@ -3,9 +3,16 @@ import { View, Text } from '@tarojs/components'
 import { AtNavBar, AtButton } from 'taro-ui'
 
 // import "taro-ui/dist/style/components/button.scss" // 按需引入
-import './index.scss'
+// import './index.scss'
 
 export default class Index extends Component {
+
+  constructor () {
+    super(...arguments)
+    this.state = {
+      // current: 1
+    }
+  }
 
   componentWillMount () { }
 
@@ -25,18 +32,18 @@ export default class Index extends Component {
           onClickRgIconNd={this.handleClick}
           onClickLeftIcon={this.handleClick}
           color='#000'
-          title='NavBar 导航栏示例'
-          leftText='返回'
+          title='个人中心'
+          leftIconType='chevron-left'
           rightFirstIconType='bullet-list'
           rightSecondIconType='user'
         />
 
-        <Text>Hello world!</Text>
-        <AtButton type='primary'>I need Taro UI</AtButton>
-        <Text>Taro UI 支持 Vue 了吗？</Text>
-        <AtButton type='primary' circle={true}>支持</AtButton>
+        <Text>个人设置</Text>
+
+        <AtButton type='primary' circle>支持</AtButton>
         <Text>共建？</Text>
-        <AtButton type='secondary' circle={true}>来</AtButton>
+        <AtButton type='secondary' circle>来</AtButton>
+
       </View>
     )
   }
