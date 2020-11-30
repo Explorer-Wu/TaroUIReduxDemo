@@ -1,3 +1,4 @@
+import Taro from '@tarojs/taro'
 import React, { Component } from 'react'
 import { View, Swiper, SwiperItem, Image, Video } from '@tarojs/components'
 import { AtTabs, AtTabsPane, AtNavBar } from 'taro-ui'
@@ -17,8 +18,17 @@ export default class Found extends Component {
     this.state = {
       current: 0,
     }
+    this.handleBack = this.handleBack.bind(this)
+    this.changeTab = this.changeTab.bind(this)
   }
-  handleClick (value) {
+
+  handleBack(val) {
+    Taro.navigateBack({
+      delta: val
+    })
+  }
+
+  changeTab(value) {
     this.setState({
       current: value
     })
@@ -90,16 +100,16 @@ export default class Found extends Component {
     return (
       <View className='index'>
         <AtNavBar
-          onClickRgIconSt={this.handleClick}
-          onClickRgIconNd={this.handleClick}
-          onClickLeftIcon={this.handleClick}
+          // onClickRgIconSt={this.handleClick}
+          // onClickRgIconNd={this.handleClick}
+          onClickLeftIcon={this.handleBack}
           color='#333'
           title='发现音乐'
           leftIconType='chevron-left'
           rightFirstIconType='bullet-list'
         />
 
-        <AtTabs current={this.state.current} tabList={tabList} onClick={this.handleClick.bind(this)}>
+        <AtTabs current={this.state.current} tabList={tabList} onClick={this.changeTab}>
           <AtTabsPane current={this.state.current} index={0} >
             <View style='background-color: #FAFBFC;text-align: center;' >
               <Swiper

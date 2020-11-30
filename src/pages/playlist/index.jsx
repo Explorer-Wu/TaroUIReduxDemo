@@ -1,6 +1,7 @@
+import Taro from '@tarojs/taro'
 import React, { Component } from 'react'
 import { View, Text } from '@tarojs/components'
-import { AtNavBar, AtTabBar, AtList, AtListItem, AtButton } from 'taro-ui'
+import { AtNavBar, AtList, AtListItem, AtButton } from 'taro-ui'
 
 // import "taro-ui/dist/style/components/button.scss" // 按需引入
 import './index.scss'
@@ -10,8 +11,9 @@ export default class Index extends Component {
   constructor () {
     super(...arguments)
     this.state = {
-      current: 1
+      // current: 1
     }
+    this.handleBack = this.handleBack.bind(this)
   }
 
   componentWillMount () { }
@@ -24,19 +26,19 @@ export default class Index extends Component {
 
   componentDidHide () { }
 
-  handleClick (value) {
-    this.setState({
-      current: value
+  handleBack(val) {
+    Taro.navigateBack({
+      delta: val
     })
   }
 
   render () {
     return (
-      <View className='index'>
+      <View>
         <AtNavBar
-          onClickRgIconSt={this.handleClick}
-          onClickRgIconNd={this.handleClick}
-          onClickLeftIcon={this.handleClick}
+          // onClickRgIconSt={this.handleClick}
+          // onClickRgIconNd={this.handleClick}
+          onClickLeftIcon={this.handleBack}
           color='#000'
           title='我的音乐'
           leftIconType='chevron-left'
@@ -44,7 +46,7 @@ export default class Index extends Component {
           rightSecondIconType='user'
         />
 
-        <Text>李健专辑</Text>
+        <Text className='txt-center'>李健专辑</Text>
 
         <AtList>
           <AtListItem
